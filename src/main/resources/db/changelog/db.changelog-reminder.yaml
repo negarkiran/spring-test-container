@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: reminder-table
+      author: Kiran
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: reminders
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  startWith: 100
+                  incrementBy: 1
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: id_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR
+            tableName: reminders
